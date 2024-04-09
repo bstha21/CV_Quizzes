@@ -67,7 +67,7 @@ const QuizUI = () => {
     };
 
     const txtStyle = {
-        color: "#5928E5"
+        color: "#8172DB"
     };
 
     const handleInputChange = (e) => {
@@ -114,7 +114,7 @@ const QuizUI = () => {
 
             if (!response.ok) {
                 // throw new Error(`HTTP error! Status: ${response.status}`);
-                toast.error('Some error encountered. Please try again later.');
+                toast.error('Some problem encountered. Please try again later.');
             }
 
             const data = await response.json();
