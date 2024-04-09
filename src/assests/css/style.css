@@ -1,0 +1,36 @@
+
+.card-header{
+    background-color:#CFE2FF;
+}
+.btn-primary{
+    background-color: white !important;
+}
+.btn-primary:hover{
+    color: white !important;
+    background-color: #dc3545 !important;
+}
+ul li{
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.nav-link{
+    color:#F6F2FD !important;
+} 
+.nav-link:hover{
+    color:#FF683B !important;
+} 
+.nav-link.active{
+    color:#FF683B !important;
+} 
+.bg-body-tertiary{
+    background-color: #8172DB !important;
+}
+body{
+    background-image: url(https://site.chimpvine.com/wp-content/uploads/2023/12/cv-grades-background.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
