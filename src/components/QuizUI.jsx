@@ -113,7 +113,7 @@ const QuizUI = () => {
             const response = await fetch(apiUrl);
 
             if (!response.ok) {
-                // throw new Error(`HTTP error! Status: ${response.status}`);
+                throw new Error(`HTTP error! Status: ${response.status}`);
                 toast.error('Some problem encountered. Please try again later.');
             }
 
@@ -130,11 +130,11 @@ const QuizUI = () => {
                 setApprovalStatus({});
                 toast.success('Quiz generated successfully');
             } else {
-                // console.error('Invalid API response. Expected a non-empty array:', data);
+                console.error('Invalid API response. Expected a non-empty array:', data);
                 toast.error('Some error encountered. Please try again later.');
             }
         } catch (error) {
-            // console.error('Error fetching quiz questions:', error);
+            console.error('Error fetching quiz questions:', error);
             toast.error('Failed to fetch quiz questions. Please try again later.');
         } finally {
             setLoading(false);
