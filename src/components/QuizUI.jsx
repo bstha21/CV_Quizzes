@@ -109,7 +109,7 @@ const QuizUI = () => {
         try {
             setLoading(true);
 
-            const apiUrl = `http://54.196.157.167:5001/generate_quiz?topic=${inputData.topic}&language=${inputData.language}&subject=${inputData.subject}&number=${inputData.numberOfQuestions}`;
+            const apiUrl = `http://184.72.161.160:5001/generate_quiz?topic=${inputData.topic}&language=${inputData.language}&subject=${inputData.subject}&number=${inputData.numberOfQuestions}`;
             const response = await fetch(apiUrl);
 
             if (!response.ok) {
@@ -302,6 +302,7 @@ const QuizUI = () => {
                                         className="form-control form-control-sm mb-2"
                                         value={username}
                                         onChange={handleUsernameChange}
+                                        placeholder="Enter your username"
 
                                     />
                                     <label className="form-label">Password <span style={mystyle}>*</span></label>
@@ -311,6 +312,7 @@ const QuizUI = () => {
                                         value={password}
                                         autoComplete="off"
                                         onChange={handlePasswordChange}
+                                        placeholder="Enter your password"
                                     />
 
                                 </div>
@@ -367,6 +369,7 @@ const QuizUI = () => {
                                         value={inputData.subject}
                                         onChange={handleInputChange}
                                         disabled={loading}
+                                        placeholder="Enter your subject"
                                     />
 
                                     <label htmlFor="topic" className="form-label">
@@ -380,6 +383,7 @@ const QuizUI = () => {
                                         value={inputData.topic}
                                         onChange={handleInputChange}
                                         disabled={loading}
+                                        placeholder="Enter your topic"
                                     />
 
                                     <label htmlFor="language" className="form-label">
