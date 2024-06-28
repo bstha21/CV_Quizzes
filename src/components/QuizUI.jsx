@@ -39,32 +39,32 @@ const QuizUI = () => {
     const [regenerationAttempts, setRegenerationAttempts] = useState(5)
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [authenticated, setAuthenticated] = useState(false);
+    // const [authenticated, setAuthenticated] = useState(false);
     const downloadPdfRef = useRef(null);
 
-    const handleUsernameChange = (e) => {
-        setUsername(e.target.value);
-    };
+    // const handleUsernameChange = (e) => {
+    //     setUsername(e.target.value);
+    // };
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
+    // const handlePasswordChange = (e) => {
+    //     setPassword(e.target.value);
+    // };
 
-    const handleLogin = () => {
-        if (username === 'fondbuzz' && password === 'Z9[7&.4c@v]+') {
-            setAuthenticated(true);
-            toast.success('Access Granted');
-        } else {
-            toast.error('Invalid username or password');
-            setUsername('');
-            setPassword('');
-        }
-    };
+    // const handleLogin = () => {
+    //     if (username === 'fondbuzz' && password === 'Z9[7&.4c@v]+') {
+    //         setAuthenticated(true);
+    //         toast.success('Access Granted');
+    //     } else {
+    //         toast.error('Invalid username or password');
+    //         setUsername('');
+    //         setPassword('');
+    //     }
+    // };
 
-    const handleReset = () => {
-        setUsername('');
-        setPassword('');
-    };
+    // const handleReset = () => {
+    //     setUsername('');
+    //     setPassword('');
+    // };
 
     const txtStyle = {
         color: "#8172DB"
@@ -109,7 +109,7 @@ const QuizUI = () => {
         try {
             setLoading(true);
 
-            const apiUrl = `http://184.72.161.160:5001/generate_quiz?topic=${inputData.topic}&language=${inputData.language}&subject=${inputData.subject}&number=${inputData.numberOfQuestions}`;
+            const apiUrl = `http://52.54.188.103:5001/generate_quiz?topic=${inputData.topic}&language=${inputData.language}&subject=${inputData.subject}&number=${inputData.numberOfQuestions}`;
             const response = await fetch(apiUrl);
 
             if (!response.ok) {
@@ -282,63 +282,63 @@ const QuizUI = () => {
         }
     };
 
-    if (!authenticated) {
-        return (
-            <>
-                <NavBar />
-                <ToastContainer
-                    position="top-right"
-                    autoClose={1500}
-                />
-                <div className="container mt-5">
-                    <div className="row justify-content-center">
-                        <div className="col-md-5 border border-4 rounded-3 pt-4 pb-3 ps-5 pe-5 shadow p-3 bg-body rounded">
-                            <h4 className="text-center mb-4 mt-3" style={txtStyle}>Welcome to Quiz Generator</h4>
-                            <form>
-                                <div className="mb-3">
-                                    <label className="form-label">Username <span style={mystyle}>*</span></label>
-                                    <input
-                                        type="text"
-                                        className="form-control form-control-sm mb-2"
-                                        value={username}
-                                        onChange={handleUsernameChange}
-                                        placeholder="Enter your username"
+    // if (!authenticated) {
+    //     return (
+    //         <>
+    //             <NavBar />
+    //             <ToastContainer
+    //                 position="top-right"
+    //                 autoClose={1500}
+    //             />
+    //             <div className="container mt-5">
+    //                 <div className="row justify-content-center">
+    //                     <div className="col-md-5 border border-4 rounded-3 pt-4 pb-3 ps-5 pe-5 shadow p-3 bg-body rounded">
+    //                         <h4 className="text-center mb-4 mt-3" style={txtStyle}>Welcome to Quiz Generator</h4>
+    //                         <form>
+    //                             <div className="mb-3">
+    //                                 <label className="form-label">Username <span style={mystyle}>*</span></label>
+    //                                 <input
+    //                                     type="text"
+    //                                     className="form-control form-control-sm mb-2"
+    //                                     value={username}
+    //                                     onChange={handleUsernameChange}
+    //                                     placeholder="Enter your username"
 
-                                    />
-                                    <label className="form-label">Password <span style={mystyle}>*</span></label>
-                                    <input
-                                        type="password"
-                                        className="form-control form-control-sm mb-2"
-                                        value={password}
-                                        autoComplete="off"
-                                        onChange={handlePasswordChange}
-                                        placeholder="Enter your password"
-                                    />
+    //                                 />
+    //                                 <label className="form-label">Password <span style={mystyle}>*</span></label>
+    //                                 <input
+    //                                     type="password"
+    //                                     className="form-control form-control-sm mb-2"
+    //                                     value={password}
+    //                                     autoComplete="off"
+    //                                     onChange={handlePasswordChange}
+    //                                     placeholder="Enter your password"
+    //                                 />
 
-                                </div>
-                            </form>
-                            <div className="d-flex justify-content-between mb-4">
-                                <button
-                                    className="btn btn-sm"
-                                    onClick={handleLogin}
-                                    style={btnStyle}
-                                >
-                                    Log In
-                                </button>
-                                <button
-                                    className="btn btn-sm"
-                                    onClick={handleReset}
-                                    style={btnStyle}
-                                >
-                                    Cancel
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </>
-        );
-    }
+    //                             </div>
+    //                         </form>
+    //                         <div className="d-flex justify-content-between mb-4">
+    //                             <button
+    //                                 className="btn btn-sm"
+    //                                 onClick={handleLogin}
+    //                                 style={btnStyle}
+    //                             >
+    //                                 Log In
+    //                             </button>
+    //                             <button
+    //                                 className="btn btn-sm"
+    //                                 onClick={handleReset}
+    //                                 style={btnStyle}
+    //                             >
+    //                                 Cancel
+    //                             </button>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         </>
+    //     );
+    // }
 
     return (
         <>
