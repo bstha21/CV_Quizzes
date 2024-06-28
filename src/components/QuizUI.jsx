@@ -37,8 +37,8 @@ const QuizUI = () => {
     const [approvalStatus, setApprovalStatus] = useState({});
     const [loading, setLoading] = useState(false);
     const [regenerationAttempts, setRegenerationAttempts] = useState(5)
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    // const [username, setUsername] = useState('');
+    // const [password, setPassword] = useState('');
     // const [authenticated, setAuthenticated] = useState(false);
     const downloadPdfRef = useRef(null);
 
