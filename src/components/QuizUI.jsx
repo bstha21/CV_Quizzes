@@ -109,7 +109,7 @@ const QuizUI = () => {
         try {
             setLoading(true);
 
-            const apiUrl = `http://52.54.188.103:5001/generate_quiz?topic=${inputData.topic}&language=${inputData.language}&subject=${inputData.subject}&number=${inputData.numberOfQuestions}`;
+            const apiUrl = `https://quiz-api.chimpvine.com/?topic=${inputData.topic}&language=${inputData.language}&subject=${inputData.subject}&number=${inputData.numberOfQuestions}`;
             const response = await fetch(apiUrl);
 
             if (!response.ok) {
