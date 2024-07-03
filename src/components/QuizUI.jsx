@@ -26,6 +26,7 @@ const QuizUI = () => {
     const [inputData, setInputData] = useState({
         subject: '',
         topic: '',
+        difficulty: '',
         language: '',
         numberOfQuestions: defaultNumberOfQuestionnaires,
     });
@@ -37,34 +38,7 @@ const QuizUI = () => {
     const [approvalStatus, setApprovalStatus] = useState({});
     const [loading, setLoading] = useState(false);
     const [regenerationAttempts, setRegenerationAttempts] = useState(5)
-    // const [username, setUsername] = useState('');
-    // const [password, setPassword] = useState('');
-    // const [authenticated, setAuthenticated] = useState(false);
     const downloadPdfRef = useRef(null);
-
-    // const handleUsernameChange = (e) => {
-    //     setUsername(e.target.value);
-    // };
-
-    // const handlePasswordChange = (e) => {
-    //     setPassword(e.target.value);
-    // };
-
-    // const handleLogin = () => {
-    //     if (username === 'fondbuzz' && password === 'Z9[7&.4c@v]+') {
-    //         setAuthenticated(true);
-    //         toast.success('Access Granted');
-    //     } else {
-    //         toast.error('Invalid username or password');
-    //         setUsername('');
-    //         setPassword('');
-    //     }
-    // };
-
-    // const handleReset = () => {
-    //     setUsername('');
-    //     setPassword('');
-    // };
 
     const txtStyle = {
         color: "#8172DB"
@@ -89,6 +63,11 @@ const QuizUI = () => {
             return false;
         }
 
+        if (!inputData.difficulty.trim()) {
+            alert('Please select a difficulty.');
+            return false;
+        }
+
         if (!inputData.language.trim()) {
             alert('Please select a language.');
             return false;
@@ -109,7 +88,7 @@ const QuizUI = () => {
         try {
             setLoading(true);
 
-            const apiUrl = `https://quiz-api.chimpvine.com/?topic=${inputData.topic}&language=${inputData.language}&subject=${inputData.subject}&number=${inputData.numberOfQuestions}`;
+            const apiUrl = `http://quiz-api.chimpvine.com/generate_quiz?topic=${inputData.topic}&language=${inputData.language}&subject=${inputData.subject}&number=${inputData.numberOfQuestions}&difficulty=${inputData.difficulty}`;
             const response = await fetch(apiUrl);
 
             if (!response.ok) {
@@ -282,64 +261,6 @@ const QuizUI = () => {
         }
     };
 
-    // if (!authenticated) {
-    //     return (
-    //         <>
-    //             <NavBar />
-    //             <ToastContainer
-    //                 position="top-right"
-    //                 autoClose={1500}
-    //             />
-    //             <div className="container mt-5">
-    //                 <div className="row justify-content-center">
-    //                     <div className="col-md-5 border border-4 rounded-3 pt-4 pb-3 ps-5 pe-5 shadow p-3 bg-body rounded">
-    //                         <h4 className="text-center mb-4 mt-3" style={txtStyle}>Welcome to Quiz Generator</h4>
-    //                         <form>
-    //                             <div className="mb-3">
-    //                                 <label className="form-label">Username <span style={mystyle}>*</span></label>
-    //                                 <input
-    //                                     type="text"
-    //                                     className="form-control form-control-sm mb-2"
-    //                                     value={username}
-    //                                     onChange={handleUsernameChange}
-    //                                     placeholder="Enter your username"
-
-    //                                 />
-    //                                 <label className="form-label">Password <span style={mystyle}>*</span></label>
-    //                                 <input
-    //                                     type="password"
-    //                                     className="form-control form-control-sm mb-2"
-    //                                     value={password}
-    //                                     autoComplete="off"
-    //                                     onChange={handlePasswordChange}
-    //                                     placeholder="Enter your password"
-    //                                 />
-
-    //                             </div>
-    //                         </form>
-    //                         <div className="d-flex justify-content-between mb-4">
-    //                             <button
-    //                                 className="btn btn-sm"
-    //                                 onClick={handleLogin}
-    //                                 style={btnStyle}
-    //                             >
-    //                                 Log In
-    //                             </button>
-    //                             <button
-    //                                 className="btn btn-sm"
-    //                                 onClick={handleReset}
-    //                                 style={btnStyle}
-    //                             >
-    //                                 Cancel
-    //                             </button>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //         </>
-    //     );
-    // }
-
     return (
         <>
             <NavBar />
@@ -385,6 +306,23 @@ const QuizUI = () => {
                                         disabled={loading}
                                         placeholder="Enter your topic"
                                     />
+
+                                <label htmlFor="difficulty" className="form-label">
+                                    Difficulty <span style={mystyle}>*</span>
+                                </label>
+                                <select
+                                    className="form-select form-select-sm mb-3"
+                                    id="difficulty"
+                                    name="difficulty"
+                                    type="text"
+                                    value={inputData.difficulty}
+                                    onChange={handleInputChange}
+                                >
+                                    <option value="">Choose Difficulty</option>
+                                    <option value="easy">Easy</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="hard">Hard</option>
+                                </select>
 
                                     <label htmlFor="language" className="form-label">
                                         Language <span style={mystyle}>*</span>
