@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import NavBar from './NavBar';
 import Spinner from '../spinner/Spinner';
 import jsPDF from 'jspdf';
 import { ToastContainer, toast } from 'react-toastify';
@@ -88,7 +87,7 @@ const QuizUI = () => {
         try {
             setLoading(true);
 
-            const apiUrl = `http://quiz-api.chimpvine.com/generate_quiz?topic=${inputData.topic}&language=${inputData.language}&subject=${inputData.subject}&number=${inputData.numberOfQuestions}&difficulty=${inputData.difficulty}`;
+            const apiUrl = `https://quiz-api.chimpvine.com/generate_quiz?topic=${inputData.topic}&language=${inputData.language}&subject=${inputData.subject}&number=${inputData.numberOfQuestions}&difficulty=${inputData.difficulty}`;
             const response = await fetch(apiUrl);
 
             if (!response.ok) {
@@ -263,7 +262,6 @@ const QuizUI = () => {
 
     return (
         <>
-            <NavBar />
             <ToastContainer
                 position="top-right"
                 autoClose={1500}
